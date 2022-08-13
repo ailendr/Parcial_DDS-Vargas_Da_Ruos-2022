@@ -10,12 +10,18 @@ public abstract class Garantia {
   private String tipoDeGarantia;
   private Date fechaDeAlta;
   private float precio;
-  private boolean vigente;
   private Producto producto;
   private int factor;
 
+  public Garantia(String tipoDeGarantia, Date fechaDeAlta, float precio, Producto producto, int factor) {
+    this.tipoDeGarantia = tipoDeGarantia;
+    this.fechaDeAlta = fechaDeAlta;
+    this.precio = precio;
+    this.producto = producto;
+    this.factor = factor;
+  }
 
-   public Date fechaDeFin() {
+  public Date fechaDeFin() {
      Calendar calendar = Calendar.getInstance();
      calendar.setLenient(false);
 
@@ -23,8 +29,11 @@ public abstract class Garantia {
      calendar.add(calendar.MONTH, this.duracion());
    }
 
-   public abstract int duracion();
-    /* return 2* producto.getFactorDeImportancia;*/
+
+   public int duracion(){
+    return factor * producto.getFactorDeImportancia();
+   };
+
 
    public boolean estaVigente(){
      Date fechaActual = new Date();
@@ -48,9 +57,7 @@ public abstract class Garantia {
   }
 
 
-  public boolean isVigente() {
-    return vigente;
-  }
+
 
   public Producto getProducto() {
     return producto;
@@ -64,4 +71,11 @@ public abstract class Garantia {
     return factor;
   }
 
+  public void setFactor(int factor) {
+    this.factor = factor;
+  }
+
+  public Garantia mostrarDatos() {
+  //todo
+  }
 }
