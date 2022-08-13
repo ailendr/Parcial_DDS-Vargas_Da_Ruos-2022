@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Garantia {
+public abstract class Garantia {
   private String tipoDeGarantia;
   private Date fechaDeAlta;
   private float precio;
@@ -23,9 +23,8 @@ public class Garantia {
      calendar.add(calendar.MONTH, this.duracion());
    }
 
-   public int duracion(){
-     return 2* producto.getFactorDeImportancia;
-   }
+   public abstract int duracion();
+    /* return 2* producto.getFactorDeImportancia;*/
 
    public boolean estaVigente(){
      Date fechaActual = new Date();
@@ -55,6 +54,10 @@ public class Garantia {
 
   public Producto getProducto() {
     return producto;
+  }
+
+  public void setProducto(Producto producto) {
+    this.producto = producto;
   }
 
   public int getFactor() {
