@@ -16,8 +16,14 @@ public class Tarjeta extends MedioDePago {
     }
 
     @Override
-    public void realizarPago(){
-        //TODO
+    public void realizarPago(OrdenDeCompra orden){
+        super.realizarPago(orden);
+        verificarFechaVencimiento(orden.getFechaDeCompra());
+    }
 
+    public void verificarFechaVencimiento(Date fecha){
+        if(fechaDeVencimiento.after(fecha)){
+            throw new RuntimeException("La tarjeta está vencida");
+        }
     }
 }

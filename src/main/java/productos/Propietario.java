@@ -14,5 +14,9 @@ public class Propietario {
         this.dni = dni;
         this.productos = productos;
     }
+
+    public String getDni() {
+        return dni;
+    }
 }
 

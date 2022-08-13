@@ -33,4 +33,8 @@ public abstract class Producto {
     public int getFactorDeImportancia() {
         return factorDeImportancia;
     }
+
+  public Propietario getPropietario() {
+    return propietario;
+  }
 }
