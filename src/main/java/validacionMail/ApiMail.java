@@ -6,6 +6,6 @@ import validacionMail.entities.Mail;
 
 public interface ApiMail {
     @GET("email")
-    Call<Mail> email(@Query("email") String email );
+    Call<Mail> email(@Query("email") String direccionMail );
 
 }

@@ -26,7 +26,7 @@ public class ServicioApi {
     return instancia;
   }
 
-  public Mail propiedadesMail( String direccionMail) throws IOException{
+  public Mail consultarMail (String direccionMail) throws IOException{
     ApiMail apiMail = this.retrofit.create(ApiMail.class);
     Call<Mail> requestMailValido = apiMail.email(direccionMail);
     Response<Mail> responseMailValido = requestMailValido.execute();

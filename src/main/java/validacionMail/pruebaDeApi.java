@@ -12,7 +12,7 @@ public class pruebaDeApi {
         System.out.println("Ingrese mail para registrarse");
         Scanner entradaEscaner = new Scanner(System.in);
         String direccionMail = entradaEscaner.nextLine();
-        Mail mail = servicioApi.propiedadesMail(direccionMail);
-        System.out.println("los datos de este mail son:" + mail.data);
+        Mail mail = servicioApi.consultarMail(direccionMail);
+        System.out.println("los datos de este mail son:" + mail );
     }
 }
