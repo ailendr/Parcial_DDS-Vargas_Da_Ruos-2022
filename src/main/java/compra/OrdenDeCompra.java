@@ -23,4 +23,8 @@ public class OrdenDeCompra {
     public Date getFechaDeCompra() {
         return fechaDeCompra;
     }
+
+    public Garantia getGarantia() {
+        return garantia;
+    }
 }

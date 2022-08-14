@@ -10,7 +10,7 @@ public abstract class CreadorProducto {
     }
     public void adquirirNuevaGarantia(Garantia nuevaGarantia){
         Producto producto = crearProducto();
-        producto.adquirirNuevaGarantia(Garantia nuevaGarantia);
+        producto.adquirirNuevaGarantia(nuevaGarantia);
     }
 
     public void solicitarService(){

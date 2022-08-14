@@ -21,12 +21,13 @@ public abstract class Garantia {
     this.factor = factor;
   }
 
-  public Date fechaDeFin() {
+  public Calendar fechaDeFin() {
      Calendar calendar = Calendar.getInstance();
      calendar.setLenient(false);
 
      calendar.setTime(fechaDeAlta);
      calendar.add(calendar.MONTH, this.duracion());
+     return calendar;
    }
 
 
