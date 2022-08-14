@@ -78,5 +78,5 @@ public abstract class Garantia {
 
   public Garantia mostrarDatos() {
   //todo
-  }
+      return 0;  }
 }

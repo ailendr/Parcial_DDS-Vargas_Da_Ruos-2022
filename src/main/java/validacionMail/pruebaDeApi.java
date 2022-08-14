@@ -13,6 +13,7 @@ public class pruebaDeApi {
         Scanner entradaEscaner = new Scanner(System.in);
         String direccionMail = entradaEscaner.nextLine();
         Mail mail = servicioApi.consultarMail(direccionMail);
-        System.out.println("los datos de este mail son:" + mail );
+        System.out.println("la direccion de mail ingresada es:" + mail.getData().getEmail_address());
+        System.out.println("spam:" + mail.getData().getSpam());
     }
 }
