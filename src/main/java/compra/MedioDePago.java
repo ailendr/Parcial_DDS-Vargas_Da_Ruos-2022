@@ -1,8 +1,11 @@
 package compra;
 
+import db.EntidadPersistente;
 import garantias.Garantia;
-
-public abstract  class MedioDePago {
+/*@Entity*/
+/*@Table*/
+public abstract  class MedioDePago extends EntidadPersistente {
+    /*@Column(name = "saldo")*/
     private Float saldo;
 
     public void realizarPago(OrdenDeCompra orden) {

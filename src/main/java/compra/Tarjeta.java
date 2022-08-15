@@ -4,9 +4,13 @@ import javax.persistence.Entity;
 import java.util.Date;
 
 /*@Entity*/
-public class Tarjeta extends MedioDePago {
+/*@Table*/
+public class Tarjeta extends MedioDePago{
+    /*@Column(name = "numero")*/
     private int numero;
+    /*@Column(name = "nombre")*/
     private String nombre;
+    /*Column (name = "codigoDeSeguridad)*/
     private int codigoDeSeguridad;
     private Date fechaDeVencimiento;
 

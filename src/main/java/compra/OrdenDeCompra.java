@@ -1,5 +1,6 @@
 package compra;
 
+import db.EntidadPersistente;
 import garantias.Garantia;
 import productos.Producto;
 import productos.Propietario;
@@ -8,7 +9,8 @@ import javax.persistence.Entity;
 import java.util.Date;
 
 /*@Entity*/
-public class OrdenDeCompra {
+/*@Table*/
+public class OrdenDeCompra extends EntidadPersistente {
     private Garantia garantia;
     private Producto producto;
     private MedioDePago medioDePago;

@@ -5,8 +5,11 @@ import garantias.Garantia;
 import javax.persistence.Entity;
 
 /*@Entity*/
+/*@Table*/
 public class MercadoPago extends  MedioDePago {
+    /*@Column(name = "usuario") */
     private String usuario;
+    /*@Column(name="dni") */
     private String dni;
 
     public MercadoPago(String usuario, String dni) {

@@ -3,27 +3,25 @@ package productos;
 import db.EntidadPersistente;
 import garantias.Garantia;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "producto")
 public abstract class Producto extends EntidadPersistente {
 
-  @Column
+  @Column(name = "codigo")
  private int codigo;
-  @Column
+  @Column(name = "modelo")
  private String modelo;
 
   @Transient
  private Garantia garantia;
 
-@Transient
+ @ManyToOne
+ @JoinColumn(name = "id_Propietario", referencedColumnName = "id")
  private Propietario propietario;
 
- @Column
+ @Column(name ="factorDeImportancia")
  private int factorDeImportancia;
 
  @Transient
@@ -37,10 +35,10 @@ public abstract class Producto extends EntidadPersistente {
         this.propietario = propietario;
         this.factorDeImportancia = factorDeImportancia;
     }
-/*
-    public Garantia visualizarGarantia() {
-   return garantia.mostrarDatos();
-    }*/
+
+    public void visualizarGarantia() {
+      garantia.mostrarDatos();
+    }
     public void adquirirNuevaGarantia(Garantia nuevagarantia){
         garantia = nuevagarantia;
     }

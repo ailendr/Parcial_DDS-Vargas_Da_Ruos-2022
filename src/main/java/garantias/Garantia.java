@@ -2,6 +2,7 @@ package garantias;
 
 import productos.Producto;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -9,19 +10,17 @@ import java.util.Date;
 
 /*@Entity*/
 public abstract class Garantia {
+   // @Column(name = "tipoDeGarantia")
     private String tipoDeGarantia;
     private Date fechaDeAlta;
+    //@Column(name = "precio")
     private float precio;
+
+
     private Producto producto;
+    //@Column(name = "factor")
     private int factor;
-/*
-    public Garantia(String tipoDeGarantia, Date fechaDeAlta, float precio, Producto producto) {
-        this.tipoDeGarantia = tipoDeGarantia;
-        this.fechaDeAlta = fechaDeAlta;
-        this.precio = precio;
-        this.producto = producto;
-    }
-*/
+
     public Calendar fechaDeFin() {
         Calendar calendar = Calendar.getInstance();
         calendar.setLenient(false);
@@ -33,11 +32,8 @@ public abstract class Garantia {
 
 
     public int duracion() {
-        return factor * producto.getFactorDeImportancia();
+        return this.getFactor()* producto.getFactorDeImportancia();
     }
-
-    ;
-
 
     public boolean estaVigente() {
         Date fechaActual = new Date();
@@ -60,7 +56,6 @@ public abstract class Garantia {
         return precio;
     }
 
-
     public Producto getProducto() {
         return producto;
     }
@@ -69,15 +64,18 @@ public abstract class Garantia {
         this.producto = producto;
     }
 
-    public int getFactor() {
-        return factor;
-    }
+    public abstract int getFactor();
+
+  public void mostrarDatos() {
+        System.out.println("El tipo de garantia es" + tipoDeGarantia);
+        System.out.println("La fecha de alta es" + fechaDeAlta);
+        System.out.println("El estado de vigencia es:" + this.estaVigente());
+        System.out.println("El precio de la garantia es:" + precio);
+      }
+
+
+
 }
 
 
-  /*public Garantia mostrarDatos() {
-  //todo
-      return 0;  }
-}
-*
-   */
+
