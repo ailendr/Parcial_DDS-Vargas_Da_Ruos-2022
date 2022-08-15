@@ -6,27 +6,22 @@ import validacionMail.entities.Mail;
 import java.io.IOException;
 
 public class Cliente extends Usuario{
-    private String mail;
     private String mailARegistrar;
 
-
-    public String getMail() {
-        return mail;
-    }
 
     @Override
     public void validarDatos(){
         super.validarDatos();
         RepoUsuarios repoDeUsuarios = new RepoUsuarios();
-        //de la lista de clientes, obtenemos una lista de los mails y verificar que exista este mail en esa lista
+        if(!repoDeUsuarios.consultarMail(mailARegistrar)){
+            throw new RuntimeException("Este mail no está registrado");
+        }
 
     }
-    @Override
-    public boolean esCliente(){ return true;}
 
     public void darDeAltaUsuario() throws IOException {
         validarMail(mailARegistrar);
-        validarContrasenia(this.getNuevaContrasenia());
+        validarContrasenia(nuevaContrasenia);
     }
 
     private void validarMail(String mailARegistrar) throws IOException {
@@ -34,7 +29,12 @@ public class Cliente extends Usuario{
             Mail nuevoMail = servicioApi.consultarMail(mailARegistrar);
             String spam = nuevoMail.getData().getSpam();
             if(spam.equals("true")){
-                throw new RuntimeException("El mail ingresado es invalido, fallo su registro");
+                throw new RuntimeException("El mail ingresado es spam, fallo su registro");
             }
+        RepoUsuarios repoDeUsuarios = new RepoUsuarios();
+        if(repoDeUsuarios.consultarMail(mailARegistrar)){
+            throw new RuntimeException("Este mail está registrado en el sistema, ingrese uno nuevo");
+        }
+        mail = mailARegistrar;
         }
 }

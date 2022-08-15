@@ -4,6 +4,10 @@ import db.EntidadPersistente;
 import garantias.Garantia;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -30,6 +34,10 @@ public abstract class Producto extends EntidadPersistente {
  @Transient
  private String color;
 
+ @OneToMany(mappedBy = "producto", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+ private List<Servicio> servicios= new ArrayList<>();
+
+
 
     public Producto(int codigo, String modelo, Garantia garantia, Propietario propietario, int factorDeImportancia) {
         this.codigo = codigo;
@@ -45,8 +53,9 @@ public abstract class Producto extends EntidadPersistente {
     public void adquirirNuevaGarantia(Garantia nuevagarantia){
         garantia = nuevagarantia;
     }
-    public void solicitarService(){
-        //todo
+    public void solicitarService(Servicio...servicios){
+        Collections.addAll(this.servicios, servicios);
+
     }
 
     public int getFactorDeImportancia() {

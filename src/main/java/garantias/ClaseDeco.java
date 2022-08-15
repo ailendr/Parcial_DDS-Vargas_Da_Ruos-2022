@@ -11,12 +11,6 @@ import java.util.Date;
 public abstract class ClaseDeco extends Garantia {
     @Transient
     private Garantia garantiaBase;
-/*
-    public ClaseDeco(String tipoDeGarantia, Date fechaDeAlta, float precio, Producto producto, int factor, Garantia garantiaBase) {
-        super(tipoDeGarantia, fechaDeAlta, precio, producto, factor);
-        this.garantiaBase = garantiaBase;
-    }
-*/
     public float precioTotal() {
         return garantiaBase.getPrecio()+ this.getPrecio();
     }

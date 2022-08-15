@@ -1,9 +1,10 @@
 package seguridad;
 
 public abstract class Usuario {
+    protected String mail;
     private String user;
     private String contrasenia;
-    private String nuevaContrasenia;
+    protected String nuevaContrasenia;
 
     public String getUser() {
         return user;
@@ -18,6 +19,7 @@ public abstract class Usuario {
         if (!contrasenia.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=-])(?=\\S+$).{8,}$")) {
             throw new RuntimeException("La contrasenia es invalida");
         }
+
     }
 
 
@@ -32,11 +34,8 @@ public abstract class Usuario {
        };
     }
 
-    ;
 
-    public abstract boolean esCliente();
-
-    protected String getNuevaContrasenia() {
-        return nuevaContrasenia;
+    public String getMail() {
+        return mail;
     }
 }

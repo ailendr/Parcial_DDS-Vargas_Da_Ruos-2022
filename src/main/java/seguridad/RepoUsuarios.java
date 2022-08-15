@@ -22,10 +22,9 @@ public class RepoUsuarios {
         return optional.isPresent();
     }
 
-    public List<Cliente> listaDeClientes() {
-        Stream<Usuario> optional = usuarios.stream().filter(m -> m.esCliente());
-
-        Map<Cliente, String > mapa = optional.collect(Collectors.toMap(x -> x.getMail(), x -> x));
-
+    public boolean consultarMail (String direccionMail){
+        Optional<Usuario> optional = usuarios.stream().filter(m -> m.getMail().equals(direccionMail)).findFirst();
+        return optional.isPresent();
     }
+
 }

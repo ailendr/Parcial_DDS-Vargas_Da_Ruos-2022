@@ -23,7 +23,7 @@ public abstract class Garantia extends EntidadPersistente {
     private float precio;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "id_Producto")
+    @JoinTable(name = "id_producto")
     private Producto producto;
     @Transient
     private int factor;

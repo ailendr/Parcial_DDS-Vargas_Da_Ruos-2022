@@ -10,7 +10,4 @@ public class Vendedor extends  Usuario{
        throw new RuntimeException("Su legajo es incorrecto");
       }
     }
-
-    @Override
-    public boolean esCliente(){ return false;}
 }
