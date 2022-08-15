@@ -4,8 +4,10 @@ import garantias.Garantia;
 import productos.Producto;
 import productos.Propietario;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
+/*@Entity*/
 public class OrdenDeCompra {
     private Garantia garantia;
     private Producto producto;

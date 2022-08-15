@@ -1,14 +1,32 @@
 package productos;
 
+import db.EntidadPersistente;
 import garantias.Garantia;
 
-public abstract class Producto {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(name = "producto")
+public abstract class Producto extends EntidadPersistente {
+
+  @Column
  private int codigo;
+  @Column
  private String modelo;
+
+  @Transient
  private Garantia garantia;
+
+@Transient
  private Propietario propietario;
+
+ @Column
  private int factorDeImportancia;
 
+ @Transient
  private String color;
 
 
@@ -19,10 +37,10 @@ public abstract class Producto {
         this.propietario = propietario;
         this.factorDeImportancia = factorDeImportancia;
     }
-
+/*
     public Garantia visualizarGarantia() {
    return garantia.mostrarDatos();
-    }
+    }*/
     public void adquirirNuevaGarantia(Garantia nuevagarantia){
         garantia = nuevagarantia;
     }

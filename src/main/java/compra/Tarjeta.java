@@ -1,7 +1,9 @@
 package compra;
 
+import javax.persistence.Entity;
 import java.util.Date;
 
+/*@Entity*/
 public class Tarjeta extends MedioDePago {
     private int numero;
     private String nombre;

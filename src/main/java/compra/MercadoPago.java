@@ -2,6 +2,9 @@ package compra;
 
 import garantias.Garantia;
 
+import javax.persistence.Entity;
+
+/*@Entity*/
 public class MercadoPago extends  MedioDePago {
     private String usuario;
     private String dni;

@@ -1,7 +1,9 @@
 package productos;
 
+import javax.persistence.Entity;
 import java.util.List;
 
+/*@Entity*/
 public class Propietario {
     private String nombre;
     private String apellido;

@@ -2,24 +2,26 @@ package garantias;
 
 import productos.Producto;
 
+import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
+/*@Entity*/
 public abstract class Garantia {
     private String tipoDeGarantia;
     private Date fechaDeAlta;
     private float precio;
     private Producto producto;
     private int factor;
-
+/*
     public Garantia(String tipoDeGarantia, Date fechaDeAlta, float precio, Producto producto) {
         this.tipoDeGarantia = tipoDeGarantia;
         this.fechaDeAlta = fechaDeAlta;
         this.precio = precio;
         this.producto = producto;
     }
-
+*/
     public Calendar fechaDeFin() {
         Calendar calendar = Calendar.getInstance();
         calendar.setLenient(false);
