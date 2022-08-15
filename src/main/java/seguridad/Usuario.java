@@ -21,7 +21,18 @@ public abstract class Usuario {
     }
 
 
-    public abstract void validarDatos() ;
+    public void validarDatos() {
+        validarUsuarioExistente(user);
+    }
+
+    private void validarUsuarioExistente(String user) {
+        RepoUsuarios repoUsuarios = RepoUsuarios.instancia();
+       if(!repoUsuarios.consultarPorUser(user)){
+           throw new RuntimeException("El usuario ingresado no existe");
+       };
+    }
+
+    ;
 
     public abstract boolean esCliente();
 

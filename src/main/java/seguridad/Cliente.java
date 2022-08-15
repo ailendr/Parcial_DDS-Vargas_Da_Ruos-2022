@@ -8,8 +8,15 @@ import java.io.IOException;
 public class Cliente extends Usuario{
     private String mail;
     private String mailARegistrar;
+
+
+    public String getMail() {
+        return mail;
+    }
+
     @Override
     public void validarDatos(){
+        super.validarDatos();
         RepoUsuarios repoDeUsuarios = new RepoUsuarios();
         //de la lista de clientes, obtenemos una lista de los mails y verificar que exista este mail en esa lista
 

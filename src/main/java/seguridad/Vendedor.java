@@ -5,6 +5,7 @@ public class Vendedor extends  Usuario{
 
     @Override
     public void validarDatos(){
+        super.validarDatos();
       if(! legajo.contains("b")){
        throw new RuntimeException("Su legajo es incorrecto");
       }

@@ -3,8 +3,10 @@ package seguridad;
 public class Administrador extends Usuario {
     private String codigoDeAdmin;
 
+
     @Override
     public void validarDatos(){
+        super.validarDatos();
         validarLongitudCodigo(codigoDeAdmin);
         validarPrimeraLetra(codigoDeAdmin);
     }
