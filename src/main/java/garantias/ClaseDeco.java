@@ -2,16 +2,14 @@ package garantias;
 
 import productos.Producto;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @DiscriminatorValue("garantiaEspecial")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class ClaseDeco extends Garantia {
+    @Transient
     private Garantia garantiaBase;
 /*
     public ClaseDeco(String tipoDeGarantia, Date fechaDeAlta, float precio, Producto producto, int factor, Garantia garantiaBase) {

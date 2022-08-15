@@ -1,20 +1,25 @@
 package compra;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import java.time.LocalDate;
 import java.util.Date;
 
-/*@Entity*/
-/*@Table*/
+@Entity
+@Table
 public class Tarjeta extends MedioDePago{
-    /*@Column(name = "numero")*/
+    @Column(name = "numero")
     private int numero;
-    /*@Column(name = "nombre")*/
+    @Column(name = "nombre")
     private String nombre;
-    /*Column (name = "codigoDeSeguridad)*/
+    @Column (name = "codigoDeSeguridad")
     private int codigoDeSeguridad;
-    private Date fechaDeVencimiento;
+    @Column(name = "fechaDeVencimiento", columnDefinition = "DATE")
+    private LocalDate fechaDeVencimiento;
 
-    public Tarjeta(int numero, String nombre, int codigoDeSeguridad, Date fechaDeVencimiento) {
+    public Tarjeta(int numero, String nombre, int codigoDeSeguridad, LocalDate fechaDeVencimiento) {
         this.numero = numero;
         this.nombre = nombre;
         this.codigoDeSeguridad = codigoDeSeguridad;
@@ -27,8 +32,8 @@ public class Tarjeta extends MedioDePago{
         verificarFechaVencimiento(orden.getFechaDeCompra());
     }
 
-    public void verificarFechaVencimiento(Date fecha){
-        if(fechaDeVencimiento.after(fecha)){
+    public void verificarFechaVencimiento(LocalDate fecha){
+        if(fechaDeVencimiento.isAfter(fecha)){
             throw new RuntimeException("La tarjeta está vencida");
         }
     }

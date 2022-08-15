@@ -1,12 +1,10 @@
 package garantias;
 
 import db.EntidadPersistente;
+import db.LocalDateAttributeConverter;
 import productos.Producto;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,23 +16,27 @@ public abstract class Garantia extends EntidadPersistente {
     @Column(name = "nombreGarantia")
     private String nombreGarantia;
 
-    @Column (name = "fechaDeAlta") //DUDA
-    private Date fechaDeAlta;
+    @Column(name = "fechaDeAlta", columnDefinition = "DATE")
+    private LocalDate fechaDeAlta;
+
     @Column(name = "precio")
     private float precio;
 
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "id_Producto")
     private Producto producto;
-    @Column(name = "factor")
+    @Transient
     private int factor;
 
-    public Calendar fechaDeFin() {
-        Calendar calendar = Calendar.getInstance();
+
+    public LocalDate fechaDeFin() {
+       /* Calendar calendar = Calendar.getInstance();
         calendar.setLenient(false);
 
         calendar.setTime(fechaDeAlta);
         calendar.add(calendar.MONTH, this.duracion());
-        return calendar;
+        return calendar;*/
+        return fechaDeAlta.plusMonths(this.duracion());
     }
 
 
@@ -43,8 +45,8 @@ public abstract class Garantia extends EntidadPersistente {
     }
 
     public boolean estaVigente() {
-        Date fechaActual = new Date();
-        return fechaDeFin().after(fechaActual);
+        LocalDate fechaActual = LocalDate.now();
+        return fechaActual.isAfter(fechaDeFin());
     }
 
     public String getTipoDeGarantia() {
@@ -55,7 +57,7 @@ public abstract class Garantia extends EntidadPersistente {
         this.nombreGarantia = tipoDeGarantia;
     }
 
-    public Date getFechaDeAlta() {
+    public LocalDate getFechaDeAlta() {
         return fechaDeAlta;
     }
 

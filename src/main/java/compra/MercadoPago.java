@@ -2,14 +2,16 @@ package compra;
 
 import garantias.Garantia;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
-/*@Entity*/
-/*@Table*/
+@Entity
+@Table(name = "MercadoPago")
 public class MercadoPago extends  MedioDePago {
-    /*@Column(name = "usuario") */
+    @Column(name = "usuario")
     private String usuario;
-    /*@Column(name="dni") */
+    @Column(name="dni")
     private String dni;
 
     public MercadoPago(String usuario, String dni) {

@@ -1,8 +1,9 @@
 package productos;
 
+import db.EntidadPersistente;
 import garantias.Garantia;
 
-public abstract class CreadorProducto {
+public abstract class CreadorProducto extends EntidadPersistente {
 
     public void visualizarGarantia(){
         Producto producto = crearProducto();

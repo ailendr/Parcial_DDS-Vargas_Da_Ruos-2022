@@ -12,13 +12,12 @@ public abstract class Producto extends EntidadPersistente {
 
   @Column(name = "codigo")
  private int codigo;
+
   @Column(name = "modelo")
  private String modelo;
 
-
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "id_garantia")
-
  private Garantia garantia;
 
  @ManyToOne

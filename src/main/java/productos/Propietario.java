@@ -1,11 +1,13 @@
 package productos;
 
+import db.EntidadPersistente;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table
-public class Propietario {
+public class Propietario extends EntidadPersistente {
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "apellido")
