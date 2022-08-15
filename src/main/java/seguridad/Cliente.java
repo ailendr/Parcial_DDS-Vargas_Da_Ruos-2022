@@ -18,12 +18,16 @@ public class Cliente extends Usuario{
     public boolean esCliente(){ return true;}
 
     public void darDeAltaUsuario() throws IOException {
-        ServicioApi servicioApi = ServicioApi.instancia();
-        Mail nuevoMail = servicioApi.consultarMail(mailARegistrar);
-        String spam = nuevoMail.getData().getSpam();
-        if(spam.equals("true")){
-            throw new RuntimeException("El mail ingresado es invalido, fallo su registro");
-        }
-
+        validarMail(mailARegistrar);
+        validarContrasenia(this.getNuevaContrasenia());
     }
+
+    private void validarMail(String mailARegistrar) throws IOException {
+            ServicioApi servicioApi = ServicioApi.instancia();
+            Mail nuevoMail = servicioApi.consultarMail(mailARegistrar);
+            String spam = nuevoMail.getData().getSpam();
+            if(spam.equals("true")){
+                throw new RuntimeException("El mail ingresado es invalido, fallo su registro");
+            }
+        }
 }

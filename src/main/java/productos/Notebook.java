@@ -2,6 +2,11 @@ package productos;
 
 import garantias.Garantia;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("notebook")
 public class Notebook extends Producto{
 private String sistemaOperativo ;
 private String procesador;
@@ -13,4 +18,5 @@ private int ram;
         this.procesador = procesador;
         this.ram = ram;
     }
+
 }

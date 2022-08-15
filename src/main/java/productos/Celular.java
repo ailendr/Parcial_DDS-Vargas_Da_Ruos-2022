@@ -2,6 +2,11 @@ package productos;
 
 import garantias.Garantia;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("celular")
 public class Celular extends Producto{
     private int mpCamaraPrincipal;
     private int mpCamaraFrontal;

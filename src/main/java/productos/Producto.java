@@ -6,7 +6,8 @@ import garantias.Garantia;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "producto")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+
 public abstract class Producto extends EntidadPersistente {
 
   @Column(name = "codigo")
@@ -14,7 +15,10 @@ public abstract class Producto extends EntidadPersistente {
   @Column(name = "modelo")
  private String modelo;
 
-  @Transient
+
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "id_garantia")
+
  private Garantia garantia;
 
  @ManyToOne

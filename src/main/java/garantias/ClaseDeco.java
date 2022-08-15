@@ -2,8 +2,15 @@ package garantias;
 
 import productos.Producto;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import java.util.Date;
 
+@Entity
+@DiscriminatorValue("garantiaEspecial")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public abstract class ClaseDeco extends Garantia {
     private Garantia garantiaBase;
 /*
@@ -12,7 +19,7 @@ public abstract class ClaseDeco extends Garantia {
         this.garantiaBase = garantiaBase;
     }
 */
-    public void precioTotal() {
-        Float precio = garantiaBase.getPrecio()+ this.getPrecio();
+    public float precioTotal() {
+        return garantiaBase.getPrecio()+ this.getPrecio();
     }
 }

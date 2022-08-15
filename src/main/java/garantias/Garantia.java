@@ -1,24 +1,31 @@
 package garantias;
 
+import db.EntidadPersistente;
 import productos.Producto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 
-/*@Entity*/
-public abstract class Garantia {
-   // @Column(name = "tipoDeGarantia")
-    private String tipoDeGarantia;
+@Entity
+@Inheritance (strategy = InheritanceType.SINGLE_TABLE)
+
+public abstract class Garantia extends EntidadPersistente {
+    @Column(name = "nombreGarantia")
+    private String nombreGarantia;
+
+    @Column (name = "fechaDeAlta") //DUDA
     private Date fechaDeAlta;
-    //@Column(name = "precio")
+    @Column(name = "precio")
     private float precio;
 
 
     private Producto producto;
-    //@Column(name = "factor")
+    @Column(name = "factor")
     private int factor;
 
     public Calendar fechaDeFin() {
@@ -41,11 +48,11 @@ public abstract class Garantia {
     }
 
     public String getTipoDeGarantia() {
-        return tipoDeGarantia;
+        return nombreGarantia;
     }
 
     public void setTipoDeGantia(String tipoDeGarantia) {
-        this.tipoDeGarantia = tipoDeGarantia;
+        this.nombreGarantia = tipoDeGarantia;
     }
 
     public Date getFechaDeAlta() {
@@ -64,14 +71,15 @@ public abstract class Garantia {
         this.producto = producto;
     }
 
-    public abstract int getFactor();
+    public  int getFactor(){return factor;}
 
+  /*Es un metodo boton pero nos ayuda a cumplir con el requerimiento no funcional*/
   public void mostrarDatos() {
-        System.out.println("El tipo de garantia es" + tipoDeGarantia);
+        System.out.println("El tipo de garantia es" + nombreGarantia);
         System.out.println("La fecha de alta es" + fechaDeAlta);
         System.out.println("El estado de vigencia es:" + this.estaVigente());
-        System.out.println("El precio de la garantia es:" + precio);
       }
+
 
 
 
