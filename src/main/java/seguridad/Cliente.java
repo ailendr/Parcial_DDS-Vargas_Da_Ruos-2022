@@ -26,6 +26,10 @@ this.mailARegistrar=mailaregistrar;}
         validarUsuarioDisponible (nuevoUser);
         validarMail(mailARegistrar);
         validarContrasenia(nuevaContrasenia);
+        user = nuevoUser;
+        mail = mailARegistrar;
+        contrasenia = nuevaContrasenia;
+
     }
 
     private void validarUsuarioDisponible(String nuevoUser) {
@@ -47,6 +51,5 @@ this.mailARegistrar=mailaregistrar;}
         if(repoDeUsuarios.consultarMail(mailARegistrar)){
             throw new RuntimeException("Este mail está registrado en el sistema, ingrese uno nuevo");
         }
-        mail = mailARegistrar;
         }
 }

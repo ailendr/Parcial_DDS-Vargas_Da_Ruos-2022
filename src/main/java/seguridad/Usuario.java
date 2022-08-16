@@ -2,9 +2,9 @@ package seguridad;
 
 public abstract class Usuario {
     protected String mail;
-    private String user;
+    protected String user;
     protected String nuevoUser;
-    private String contrasenia;
+   protected String contrasenia;
     protected String nuevaContrasenia;
 
     public String getUser() {
