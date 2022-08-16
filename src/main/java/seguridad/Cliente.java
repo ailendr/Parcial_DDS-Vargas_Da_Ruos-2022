@@ -23,6 +23,7 @@ this.mailARegistrar=mailaregistrar;}
     }
 
     public void darDeAltaUsuario() throws IOException {
+        validarUsuarioExistente(nuevoUser);
         validarMail(mailARegistrar);
         validarContrasenia(nuevaContrasenia);
     }
