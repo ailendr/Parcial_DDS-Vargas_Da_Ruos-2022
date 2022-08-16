@@ -3,12 +3,21 @@ package seguridad;
 public abstract class Usuario {
     protected String mail;
     private String user;
+    private String nuevoUser;
     private String contrasenia;
     protected String nuevaContrasenia;
 
     public String getUser() {
         return user;
     }
+    public void setNuevoUser(String nuevoUser){
+    this.nuevoUser = nuevoUser;
+        }
+    
+    
+    public void setNuevaContrasenia(String nuevaContrasenia){
+    this.nuevaContrasenia = nuevaContrasenia;}
+    
     public void iniciarSesion(){
         validarDatos();
         validarContrasenia(nuevaContrasenia);
