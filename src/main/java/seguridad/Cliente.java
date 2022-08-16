@@ -9,7 +9,7 @@ public class Cliente extends Usuario{
     private String mailARegistrar;
 
     
-public void setMailARegistrar(mailaregistrar){
+public void setMailARegistrar(String mailaregistrar){
 this.mailARegistrar=mailaregistrar;}
 
     @Override
@@ -23,10 +23,18 @@ this.mailARegistrar=mailaregistrar;}
     }
 
     public void darDeAltaUsuario() throws IOException {
-        validarUsuarioExistente(nuevoUser);
+        validarUsuarioDisponible (nuevoUser);
         validarMail(mailARegistrar);
         validarContrasenia(nuevaContrasenia);
     }
+
+    private void validarUsuarioDisponible(String nuevoUser) {
+        RepoUsuarios repoUsuarios = RepoUsuarios.instancia();
+        if(repoUsuarios.consultarPorUser(nuevoUser)){
+            throw new RuntimeException("El usuario ya existe, escoger otro nombre de usuario");
+        }
+    }
+
 
     private void validarMail(String mailARegistrar) throws IOException {
             ServicioApi servicioApi = ServicioApi.instancia();

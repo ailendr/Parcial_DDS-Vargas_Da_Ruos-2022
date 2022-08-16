@@ -3,7 +3,7 @@ package seguridad;
 public abstract class Usuario {
     protected String mail;
     private String user;
-    private String nuevoUser;
+    protected String nuevoUser;
     private String contrasenia;
     protected String nuevaContrasenia;
 
