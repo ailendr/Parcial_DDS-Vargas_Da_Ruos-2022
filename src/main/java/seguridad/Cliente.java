@@ -8,6 +8,9 @@ import java.io.IOException;
 public class Cliente extends Usuario{
     private String mailARegistrar;
 
+    
+public void setMailARegistrar(mailaregistrar){
+this.mailARegistrar=mailaregistrar;}
 
     @Override
     public void validarDatos(){
@@ -20,6 +23,7 @@ public class Cliente extends Usuario{
     }
 
     public void darDeAltaUsuario() throws IOException {
+        validarUsuarioExistente(nuevoUser);
         validarMail(mailARegistrar);
         validarContrasenia(nuevaContrasenia);
     }
