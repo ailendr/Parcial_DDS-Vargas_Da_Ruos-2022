@@ -1,5 +1,6 @@
 package seguridad;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -15,6 +16,10 @@ public class RepoUsuarios {
             instancia = new RepoUsuarios();
         }
         return instancia;
+    }
+
+    public void agregarUsuarios(Usuario...usuarios) {
+        Collections.addAll(this.usuarios, usuarios);
     }
 
     public boolean consultarPorUser(String nombreUsuario) {
