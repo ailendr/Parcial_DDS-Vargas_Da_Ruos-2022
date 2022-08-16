@@ -7,16 +7,16 @@ public abstract class CreadorProducto extends EntidadPersistente {
 
     public void visualizarGarantia(){
         Producto producto = crearProducto();
-        /*producto.visualizarGarantia();*/
+        producto.visualizarGarantia();
     }
     public void adquirirNuevaGarantia(Garantia nuevaGarantia){
         Producto producto = crearProducto();
         producto.adquirirNuevaGarantia(nuevaGarantia);
     }
 
-    public void solicitarService(){
+    public void solicitarService(Servicio servicioNuevo){
         Producto producto = crearProducto();
-        producto.solicitarService();
+        producto.solicitarService(servicioNuevo);
     }
     
     public abstract Producto crearProducto();

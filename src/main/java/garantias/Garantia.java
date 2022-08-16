@@ -30,12 +30,6 @@ public abstract class Garantia extends EntidadPersistente {
 
 
     public LocalDate fechaDeFin() {
-       /* Calendar calendar = Calendar.getInstance();
-        calendar.setLenient(false);
-
-        calendar.setTime(fechaDeAlta);
-        calendar.add(calendar.MONTH, this.duracion());
-        return calendar;*/
         return fechaDeAlta.plusMonths(this.duracion());
     }
 
@@ -69,6 +63,7 @@ public abstract class Garantia extends EntidadPersistente {
         return producto;
     }
 
+
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
@@ -77,12 +72,14 @@ public abstract class Garantia extends EntidadPersistente {
 
   /*Es un metodo boton pero nos ayuda a cumplir con el requerimiento no funcional*/
   public void mostrarDatos() {
-        System.out.println("El tipo de garantia es" + nombreGarantia);
-        System.out.println("La fecha de alta es" + fechaDeAlta);
-        System.out.println("El estado de vigencia es:" + this.estaVigente());
+        System.out.println("Nombre de garantía" + nombreGarantia);
+        System.out.println("Fecha de alta:" + fechaDeAlta);
+        System.out.println("Estado:" + this.estaVigente());
+        System.out.println("Fecha de vencimiento" + this.fechaDeFin());
+        System.out.println("Duracion:" + this.duracion());
+
+
       }
-
-
 
 
 }
